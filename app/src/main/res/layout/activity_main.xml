@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/Denomination_du_medicament"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Denomination du medicament"
+        />
+
+    <EditText
+        android:id="@+id/forme_pharmaceutique"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Forme_pharmaceutique" />
+
+    <EditText
+        android:id="@+id/titulaires"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titulaires" />
+
+    <EditText
+        android:id="@+id/Denomination_substances"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Denomination_substances" />
+
+    <Spinner
+        android:id="@+id/planets_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voie_Admin"
+        />
+
+    <Button
+        android:id="@+id/btn_Rechercher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rechercher"
+        />
+    <ListView
+        android:id="@+id/select_dialog_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Listview"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/btn_Deconnexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deconnexion"
+            />
+
+        <Button
+            android:id="@+id/btn_quitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quitter l'application"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
+

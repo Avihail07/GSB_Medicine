@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/text_view_Code_CIS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Code_CIS:"
+        />
+
+    <TextView
+        android:id="@+id/text_view_Denomination_du_medicament"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Denomination:"
+        />
+
+    <TextView
+        android:id="@+id/text_view_Forme_pharmaceutique"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forme_pharmaceutique:"
+        />
+
+    <TextView
+        android:id="@+id/text_view_Voies_administration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voies_administration:"
+        />
+
+    <TextView
+        android:id="@+id/text_view_Titulaires"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Titulaires:"
+        />
+
+    <TextView
+        android:id="@+id/text_view_Statut_administratif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Statut_administratif:"
+        />
+
+    <TextView
+        android:id="@+id/text_view_Nombre_mollecules"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre_Mollecules:"
+        />
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
