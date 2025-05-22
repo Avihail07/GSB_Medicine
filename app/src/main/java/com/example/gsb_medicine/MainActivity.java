@@ -1,8 +1,10 @@
 package com.example.gsb_medicine;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -14,16 +16,13 @@ import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity { //le terme extends permet de faire heriter mainactivty de AppCompaActivity
     //les attributs sont déclarés ici en privé
-    private static final String PREF_NAME= "UserPref";
-    private static final String KEY_USER_STATUS= "UserStatus";
+    private static final String KEY_USER_STATUS = "userStatuts";
+    private static final String PREF_NAME = "userPref";
     private EditText EditTextDenomination, EditTextForme_pharmaceutique,EditTextDenominationSubstances,EditTextTitulaires;
     private Button ButtonDeconnexion, ButtonRechercher, ButtonQuitter;
     private Spinner SpinnerVoieAdmin;
@@ -35,6 +34,19 @@ public class MainActivity extends AppCompatActivity { //le terme extends permet 
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        if (!isUserAuthenticated()) {
+            SharedPreferences preferences = getSharedPreferences("UserPref", MODE_PRIVATE);
+            String userStatus = preferences.getString("KEY_USER_STATUS", "");
+
+
+            if ("Authentification.ok".equals(userStatus)) {
+
+            } else {
+                Intent intent = new Intent(MainActivity.this, Authentification.class); // à adapter
+                startActivity(intent);
+            }
+
         //Initialise des composants UI (interface utilisateur )
         EditTextDenomination = findViewById(R.id.Denomination_du_medicament);
         EditTextForme_pharmaceutique = findViewById(R.id.forme_pharmaceutique);
@@ -46,8 +58,14 @@ public class MainActivity extends AppCompatActivity { //le terme extends permet 
         SpinnerVoieAdmin = findViewById(R.id.planets_spinner);
         Listview = findViewById(R.id.select_dialog_listview);
 
-        // Initialize the database helper
+        // Initialize the database helper2807
         dbHelper = new DatabaseHelper(this);
+
+
+         //String Statut = get sur preferences pour recuperer la valeur de KEY_USER_STATUS
+            //si KEY_USER_STATUS "Authentification.ok".equals(statuUser)
+
+        }
 
 // Set up the spinner with Voies_dadministration data
         //spinner : liste deroulante
@@ -97,15 +115,22 @@ public class MainActivity extends AppCompatActivity { //le terme extends permet 
             imm.hideSoftInputFromWindow(vueCourante.getWindowToken(), 0);
         }
     }
+
     private boolean isUserAuthenticated(){
         SharedPreferences preferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
         // SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userStatus = preferences.getString(KEY_USER_STATUS, "");
-
         // VÃ©rifiez si la chaÃ®ne d'Ã©tat de l'utilisateur est "authentification=OK"
-        return "authentification=OK".equals(userStatus);
+        return "Authentification=OK".equals(userStatus);
 
     }
+    private void setUserStatus(String status) {
+        SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_USER_STATUS, status);
+        editor.apply();
+    }
+
   private void performSearch (){
      String denomination = EditTextDenomination.getText().toString().trim();
      String FormePharmaceutique = EditTextForme_pharmaceutique.getText().toString().trim();

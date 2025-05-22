@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentification"
+    tools:context=".Authentification"
     android:orientation="vertical">
 
     <TextView
@@ -25,21 +25,30 @@
         android:id="@+id/btn_valider_code_visiteur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Validé"
+        android:onClick="afficherLayout"
+        android:text="Valider"
         />
 
+<LinearLayout
+    android:id="@+id/key"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <EditText
-        android:id="@+id/edit_text_validé_cle_secrete"
+        android:id="@+id/edit_text_valide_cle_secrete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="clé secrète"
         />
 
     <Button
-        android:id="@+id/btn_validé_cle_secrète"
+        android:id="@+id/btn_valide_cle_secrete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Validé"
+        android:onClick="validerConnexion"
+        android:text="Valider"
         />
+</LinearLayout>
 
 </LinearLayout>
