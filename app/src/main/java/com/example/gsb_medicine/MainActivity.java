@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity { //le terme extends permet 
         setContentView(R.layout.activity_main);
 
         if (!isUserAuthenticated()) {
-            SharedPreferences preferences = getSharedPreferences("UserPref", MODE_PRIVATE);
-            String userStatus = preferences.getString("KEY_USER_STATUS", "");
+            SharedPreferences preferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+            String userStatus = preferences.getString(KEY_USER_STATUS, "");
 
 
-            if ("Authentification.ok".equals(userStatus)) {
+            if ("authentification.ok".equals(userStatus)) {
 
             } else {
                 Intent intent = new Intent(MainActivity.this, Authentification.class); // à adapter
@@ -116,14 +116,28 @@ public class MainActivity extends AppCompatActivity { //le terme extends permet 
         }
     }
 
-    private boolean isUserAuthenticated(){
+    private boolean isUserAuthenticated() {
+
         SharedPreferences preferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+
         // SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userStatus = preferences.getString(KEY_USER_STATUS, "");
-        // VÃ©rifiez si la chaÃ®ne d'Ã©tat de l'utilisateur est "authentification=OK"
-        return "Authentification=OK".equals(userStatus);
 
+        // Vérifiez si la chaîne d'état de l'utaffuilisateur est "Authentifie=OK"
+        return "authentification=OK".equals(userStatus);
     }
+
+    public void deconnexion(View view) {
+        setUserStatus("authentification=KO");
+        Intent authIntent = new Intent(this, Authentification.class);
+        startActivity(authIntent);
+        finish();
+    }
+
+    public void quitter(View view) {
+        finishAffinity();
+    }
+
     private void setUserStatus(String status) {
         SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

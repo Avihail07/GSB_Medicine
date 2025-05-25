@@ -64,6 +64,7 @@
             android:id="@+id/btn_Deconnexion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="deconnexion"
             android:text="Deconnexion"
             />
 

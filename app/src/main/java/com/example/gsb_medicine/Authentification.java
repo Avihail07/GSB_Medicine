@@ -58,11 +58,11 @@ public class Authentification extends AppCompatActivity {
     public void validerConnexion(View V){
         String keySaisie = cleSaisie.getText().toString();
         if (keySaisie.equals(myRandomKey)) {
-            setUserStatus("Authentification.OK");
+            setUserStatus("authentification.OK");
             Intent intent = new Intent(Authentification.this, MainActivity.class); // à adapter
             startActivity(intent);
         } else {
-            setUserStatus("Authentification.KO");
+            setUserStatus("authentification.KO");
         }
     }
 
